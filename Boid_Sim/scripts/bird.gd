@@ -2,8 +2,12 @@
 # CC0 1.0 Universal License (CC0 1.0) Public Domain Dedication (https://creativecommons.org/publicdomain/zero/1.0/)
 
 extends Node3D
-@export var max_initial_speed: float = 0.00000001
-@export var velocity: Vector3 = Vector3.ZERO
+@export var max_initial_speed: float = 0.5
+var velocity: Vector3 = Vector3(
+			randf_range(-1.0, 1.0),
+			randf_range(-1.0, 1.0),
+			randf_range(-1.0, 1.0)
+		).normalized()
 @export var goal_point: Vector3 = Vector3.ZERO
 
 var x_bounds = Vector2(-20, 5)
@@ -25,8 +29,8 @@ func _ready() -> void:
 	flying_anim.loop = true
 	$Pigeon/AnimationPlayer2.play("flying_anims/flying")
 	var speed = randf_range(0.0, max_initial_speed)
-	velocity*=speed
 	look_at(position+velocity)
+	velocity*=speed
 	
 	return
 	
@@ -39,6 +43,12 @@ func _physics_process(_delta: float) -> void:
 	var c_value = cohesion_slider.value
 
 	apply_boid_behaviour(s_value, a_value, c_value)
+	
+	#modify speed
+	velocity = velocity.normalized()*randf_range(0.0, max_initial_speed)
+	
+	# Look in moving direction
+	look_at(position+velocity)
 	
 	# if bird is outside of boudary reverse direction
 	position+=velocity

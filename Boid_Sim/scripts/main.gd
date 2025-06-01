@@ -21,12 +21,6 @@ func _ready() -> void:
 		var instance = BIRD.instantiate()
 		instance.position =Vector3(randf_rangeV(x_range),randf_rangeV(z_range),randf_rangeV(y_range))
 		birds_root.add_child(instance)
-		var random_direction = Vector3(
-			randf_range(-1.0, 1.0),
-			randf_range(-1.0, 1.0),
-			randf_range(-1.0, 1.0)
-		).normalized()
-		instance.velocity = random_direction
 		#instance.camera = camera_3d
 		print_debug("Spawned "+str(i)+" birdoid")
 	
