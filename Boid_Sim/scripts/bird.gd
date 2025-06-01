@@ -9,6 +9,10 @@ var x_bounds = Vector2(-20, 5)
 var y_bounds = Vector2(10,20)
 var z_bounds = Vector2(-5, 20)
 
+@onready var separation_slider = get_node("../../WorldEnvironment/Control/separation")
+@onready var alignment_slider = get_node("../../WorldEnvironment/Control/alignment")
+@onready var cohesion_slider = get_node("../../WorldEnvironment/Control/cohesion")
+
 @export var neighbour_distance:float = 10.0
 var neighbours: Array = []
 
@@ -25,7 +29,13 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	find_neighbours()
-	apply_boid_behaviour()
+	
+	var s_value = separation_slider.value
+	var a_value = alignment_slider.value
+	var c_value = cohesion_slider.value
+
+	apply_boid_behaviour(s_value, a_value, c_value)
+	
 	position+=velocity
 	if position.x < x_bounds.x or position.x > x_bounds.y:
 		velocity.x = - velocity.x
@@ -47,7 +57,7 @@ func find_neighbours() -> void:
 			if distance < neighbour_distance:
 				neighbours.append(bird)
 				
-func apply_boid_behaviour() -> void:
+func apply_boid_behaviour(s_fac = 0.01, a_fac = 0.01, c_fac = 0.01) -> void:
 	if neighbours.size() == 0:
 		return
 	var separation = Vector3.ZERO
@@ -68,7 +78,7 @@ func apply_boid_behaviour() -> void:
 	cohesion /= neighbours.size()
 	cohesion = (cohesion - position)
 	
-	velocity += (separation * 0.01 + alignment * 0.01 + cohesion * 0.01)
+	velocity += (separation * s_fac + alignment * a_fac + cohesion * c_fac)
 	
 	var max_speed = 1.0
 	if velocity.length() > max_speed:

@@ -2,9 +2,9 @@
 # CC0 1.0 Universal License (CC0 1.0) Public Domain Dedication (https://creativecommons.org/publicdomain/zero/1.0/)
 
 extends Node3D
-var y_range = Vector2(10,20)
-var x_range = Vector2(-20,5)
-var z_range = Vector2(-5,20)
+var y_range = Vector2(5,30)
+var x_range = Vector2(-20,20)
+var z_range = Vector2(-20,20)
 
 @onready var birds_root: Node3D = $Birds
 @onready var camera_3d: Camera3D = $Camera3D
@@ -21,7 +21,7 @@ func _ready() -> void:
 			randf_range(-1.0, 1.0)
 		).normalized()
 		instance.velocity = random_direction
-		instance.camera = camera_3d
+		#instance.camera = camera_3d
 		print_debug("Spawned "+str(i)+" birdoid")
 	pass
 	
