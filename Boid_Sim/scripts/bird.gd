@@ -4,21 +4,20 @@
 extends Node3D
 @export var max_initial_speed: float = 0.00000001
 @export var velocity: Vector3 = Vector3.ZERO
+@export var goal_point: Vector3 = Vector3.ZERO
 
 var x_bounds = Vector2(-20, 5)
 var y_bounds = Vector2(10,20)
 var z_bounds = Vector2(-5, 20)
 
+# 2d)
+# get the slider nodes
 @onready var separation_slider = get_node("../../WorldEnvironment/Control/separation")
 @onready var alignment_slider = get_node("../../WorldEnvironment/Control/alignment")
 @onready var cohesion_slider = get_node("../../WorldEnvironment/Control/cohesion")
 
-var goal_point = Vector3(0,0,0)
-@onready var random_timer = 	get_node("../../RandomEventTimer")	#trigger: 1s
-
 @export var neighbour_distance:float = 10.0
 var neighbours: Array = []
-@onready var goal_enabled = get_node("../../RandomEventTimer/goal")
 
 func _ready() -> void:
 	# Set up Animation
@@ -29,22 +28,6 @@ func _ready() -> void:
 	velocity*=speed
 	look_at(position+velocity)
 	
-	random_timer.start()
-	random_timer.connect("timeout", Callable(self, "_on_random_timer_timeout"))
-	
-	return
-	
-func _on_random_timer_timeout():
-	# This gets called every second
-	# with 70% chance new goal is defined
-	print(goal_enabled.process_mode)
-	if goal_enabled.process_mode and randf() > 0.7:
-		var rand_x = randi_range(x_bounds.x, x_bounds.y)
-		var rand_y = randi_range(y_bounds.x, y_bounds.y)
-		var rand_z = randi_range(z_bounds.x, z_bounds.y)
-		goal_point = Vector3(rand_x, rand_y, rand_z)
-		print(goal_point)
-		
 	return
 	
 
@@ -57,6 +40,7 @@ func _physics_process(_delta: float) -> void:
 
 	apply_boid_behaviour(s_value, a_value, c_value)
 	
+	# if bird is outside of boudary reverse direction
 	position+=velocity
 	if position.x < x_bounds.x or position.x > x_bounds.y:
 		velocity.x = - velocity.x

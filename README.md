@@ -8,3 +8,5 @@
 - [ ] 2e
 - [ ] 2f i
 - [ ] 2f ii
+
+## TODO: birds fly to goal_point
