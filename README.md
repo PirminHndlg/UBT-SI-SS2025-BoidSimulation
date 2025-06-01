@@ -5,8 +5,6 @@
 - [x] 2c i
 - [x] 2c ii
 - [x] 2d
-- [ ] 2e
-- [ ] 2f i
-- [ ] 2f ii
-
-## TODO: birds fly to goal_point
+- [x] 2e
+- [x] 2f i
+- [x] 2f ii
