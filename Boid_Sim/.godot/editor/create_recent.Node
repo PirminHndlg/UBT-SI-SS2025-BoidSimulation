@@ -1,0 +1,12 @@
+CollisionShape3D
+StaticBody3D
+AnimationPlayer
+Label
+CheckBox
+Timer
+HSlider
+MeshInstance3D
+WorldEnvironment
+Node3D
+DirectionalLight3D
+Camera3D

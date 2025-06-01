@@ -1,0 +1,125 @@
+[gd_scene load_steps=17 format=3 uid="uid://dcdta446dfpx6"]
+
+[ext_resource type="Script" uid="uid://c2jmeqla5v1bf" path="res://scripts/main.gd" id="1_choun"]
+[ext_resource type="PackedScene" uid="uid://pf7bxvji104s" path="res://assets/models/nature/CommonTree_2.fbx" id="1_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://y20x6qe6locb" path="res://assets/models/nature/CommonTree_5.fbx" id="2_tefeu"]
+[ext_resource type="PackedScene" uid="uid://p83qxa1jouv2" path="res://assets/models/nature/Grass_Common_Short.fbx" id="3_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://cpb3l3gglcnhg" path="res://assets/models/nature/TwistedTree_3.fbx" id="4_tefeu"]
+[ext_resource type="PackedScene" uid="uid://cpsuaia5ouacs" path="res://assets/models/nature/Grass_Wispy_Short.fbx" id="4_tipki"]
+[ext_resource type="PackedScene" uid="uid://yd7cnpa1jk37" path="res://assets/models/nature/CommonTree_1.fbx" id="5_85g3d"]
+[ext_resource type="PackedScene" uid="uid://cdtev5wnnw4lc" path="res://assets/models/nature/Pebble_Square_2.fbx" id="7_85g3d"]
+[ext_resource type="PackedScene" uid="uid://3ijtfdhsoyyc" path="res://assets/models/nature/Pebble_Square_5.fbx" id="8_choun"]
+[ext_resource type="PackedScene" uid="uid://bxj24veqj67pq" path="res://assets/models/nature/Pebble_Round_4.fbx" id="9_ya4ey"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_choun"]
+size = Vector3(1.4, 1, 1.05)
+
+[sub_resource type="Sky" id="Sky_85g3d"]
+
+[sub_resource type="Environment" id="Environment_85g3d"]
+background_mode = 1
+background_color = Color(0.330281, 0.765775, 1, 1)
+sky = SubResource("Sky_85g3d")
+sky_custom_fov = 6.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_85g3d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_choun"]
+albedo_color = Color(0.319008, 0.401783, 0.241952, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_choun"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_choun")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.993497, 0.113862, 0, -0.113862, 0.993497, -2.12075, 10.7911, 23.4309)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.429313, 0.903156, 0, -0.903156, 0.429313, 0, 143.505, 34.8366)
+light_color = Color(1, 1, 0.858824, 1)
+light_energy = 2.0
+light_indirect_energy = 1.4
+shadow_enabled = true
+
+[node name="NatureScene" type="Node3D" parent="."]
+
+[node name="Trees" type="Node3D" parent="NatureScene"]
+
+[node name="CommonTree_2" parent="NatureScene/Trees" instance=ExtResource("1_tbgi4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4757, -9.53674e-07, 3.62641)
+
+[node name="CommonTree_5" parent="NatureScene/Trees" instance=ExtResource("2_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.60795, 0, -4.2102)
+
+[node name="CommonTree_1" parent="NatureScene/Trees" instance=ExtResource("5_85g3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8146, 0, -7.04267)
+
+[node name="TwistedTree_3" parent="NatureScene/Trees" instance=ExtResource("4_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.42278, 0, -18.7893)
+
+[node name="CommonTree_3" parent="NatureScene/Trees" instance=ExtResource("5_85g3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.7225, 0, -28.8391)
+
+[node name="CommonTree_6" parent="NatureScene/Trees" instance=ExtResource("2_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.739, 0, -10.3201)
+
+[node name="CommonTree_4" parent="NatureScene/Trees" instance=ExtResource("1_tbgi4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.297487, -9.53674e-07, -27.8181)
+
+[node name="Grass" type="Node3D" parent="NatureScene"]
+
+[node name="Grass_Common_Short2" parent="NatureScene/Grass" instance=ExtResource("3_o6xl0")]
+transform = Transform3D(0.733113, 0, -0.680107, 0, 1, 0, 0.680107, 0, 0.733113, 3.44664, 0, 5.58282)
+
+[node name="Grass_Common_Short3" parent="NatureScene/Grass" instance=ExtResource("3_o6xl0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.28144, 0, 0.056201)
+
+[node name="Grass_Common_Short4" parent="NatureScene/Grass" instance=ExtResource("3_o6xl0")]
+transform = Transform3D(0.867105, 0, -0.498125, 0, 1, 0, 0.498125, 0, 0.867105, -7.85426, 0, 0.825446)
+
+[node name="Grass_Common_Short" parent="NatureScene/Grass" instance=ExtResource("3_o6xl0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.72649, 0, 5.22267)
+
+[node name="Grass_Wispy_Short" parent="NatureScene/Grass" instance=ExtResource("4_tipki")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53924, 0, -0.509769)
+
+[node name="Grass_Common_Short5" parent="NatureScene/Grass" instance=ExtResource("3_o6xl0")]
+transform = Transform3D(0.733113, 0, -0.680107, 0, 1, 0, 0.680107, 0, 0.733113, -10.3195, 0, -8.33154)
+
+[node name="Grass_Common_Short6" parent="NatureScene/Grass" instance=ExtResource("3_o6xl0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.916, 0, 4.23517)
+
+[node name="Grass_Common_Short7" parent="NatureScene/Grass" instance=ExtResource("3_o6xl0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.4176, 0, -17.6011)
+
+[node name="Rocks" type="Node3D" parent="NatureScene"]
+
+[node name="Pebble_Square_2" parent="NatureScene/Rocks" instance=ExtResource("7_85g3d")]
+transform = Transform3D(35.8201, 0, -17.8023, 0, 170, 0, 17.8023, 0, 35.8201, -11.5004, -0.781917, -19.4203)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NatureScene/Rocks/Pebble_Square_2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NatureScene/Rocks/Pebble_Square_2/StaticBody3D"]
+transform = Transform3D(0.3, 0, -1.56462e-07, 0, 0.3, 0, 1.56462e-07, 0, 0.3, -0.00413722, -0.0171623, 0.0350726)
+shape = SubResource("BoxShape3D_choun")
+debug_color = Color(0, 0.6, 0.701961, 0.768627)
+
+[node name="Pebble_Square_5" parent="NatureScene/Rocks" instance=ExtResource("8_choun")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, -4.91746, 0, -4.30406)
+
+[node name="Pebble_Round_4" parent="NatureScene/Rocks" instance=ExtResource("9_ya4ey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.24627, 0, 2.60264)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_85g3d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldEnvironment"]
+transform = Transform3D(250, 0, 0, 0, 250, 0, 0, 0, 250, 0, 0, 0)
+mesh = SubResource("PlaneMesh_85g3d")
+surface_material_override/0 = SubResource("StandardMaterial3D_choun")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WorldEnvironment/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/MeshInstance3D/StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_choun")

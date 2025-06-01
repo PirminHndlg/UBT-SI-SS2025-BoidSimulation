@@ -1,0 +1,5 @@
+res://scenes/bird.tscn
+res://assets/models/animations/fast_flying.res
+res://scripts/main.gd
+res://scenes/main.tscn
+res://scripts/bird.gd

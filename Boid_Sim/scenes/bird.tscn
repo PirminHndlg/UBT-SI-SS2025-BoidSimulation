@@ -1,0 +1,36 @@
+[gd_scene load_steps=9 format=3 uid="uid://b86q3bdpuigak"]
+
+[ext_resource type="PackedScene" uid="uid://cguffoyhkb3qb" path="res://assets/models/Pigeon.gltf" id="2_3po83"]
+[ext_resource type="Script" uid="uid://b3atjbm4cqy2g" path="res://scripts/bird.gd" id="2_b7mtg"]
+[ext_resource type="Animation" uid="uid://8ox4vvpohdpf" path="res://assets/models/animations/flying.res" id="3_twsrt"]
+[ext_resource type="Animation" uid="uid://dg4qkuq0xscot" path="res://assets/models/animations/fast_flying.res" id="4_b7mtg"]
+
+[sub_resource type="Animation" id="Animation_jggmu"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_bdh3x"]
+resource_name = "flying_animation"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hrcfq"]
+_data = {
+&"RESET": SubResource("Animation_jggmu"),
+&"flying_animation": SubResource("Animation_bdh3x")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ehebh"]
+_data = {
+&"fast_flying": ExtResource("4_b7mtg"),
+&"flying": ExtResource("3_twsrt")
+}
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("2_b7mtg")
+
+[node name="Pigeon" parent="." instance=ExtResource("2_3po83")]
+transform = Transform3D(-0.2, 0, -1.74846e-08, 0, 0.2, 0, 1.74846e-08, 0, -0.2, 0, 0, 0)
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Pigeon"]
+libraries = {
+&"": SubResource("AnimationLibrary_hrcfq"),
+&"flying_anims": SubResource("AnimationLibrary_ehebh")
+}
