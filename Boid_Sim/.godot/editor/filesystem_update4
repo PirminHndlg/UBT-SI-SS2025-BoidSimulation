@@ -1,6 +1,3 @@
-res://assets/models/animations/fast_flying.res
-res://assets/models/animations/flying.res
 res://scenes/bird.tscn
-res://scripts/main.gd
 res://scenes/main.tscn
 res://scripts/bird.gd
