@@ -5,6 +5,7 @@ extends Node3D
 @export var max_initial_speed: float = 0.00005
 @export var velocity: Vector3 = Vector3.ZERO
 @export var boundary: Vector3 = Vector3(60,60,60)
+@export var camera:Camera3D = null
 
 func _ready() -> void:
 	# Set up Animation
@@ -26,3 +27,15 @@ func _physics_process(_delta: float) -> void:
 	if (abs(position.z) > boundary.z):
 		velocity.z = -velocity.z
 	pass
+
+func is_visible_from_camera(camera: Camera3D, object: Node3D) -> bool:
+	if(camera!=null):
+		var obj_pos = object.global_transform.origin
+		var projected = camera.unproject_position(obj_pos)
+		return (
+			projected.z > 0.0 and  # in front of camera
+			projected.x >= 0.0 and projected.x <= 1.0 and
+			projected.y >= 0.0 and projected.y <= 1.0
+		)
+	print_debug("Camera visibility check with null camera")
+	return false

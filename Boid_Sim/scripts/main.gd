@@ -7,6 +7,7 @@ var x_range = Vector2(-20,5)
 var z_range = Vector2(-5,20)
 
 @onready var birds_root: Node3D = $Birds
+@onready var camera_3d: Camera3D = $Camera3D
 
 const BIRD = preload("res://scenes/bird.tscn")
 func _ready() -> void:
@@ -20,6 +21,7 @@ func _ready() -> void:
 			randf_range(-1.0, 1.0)
 		).normalized()
 		instance.velocity = random_direction
+		instance.camera = camera_3d
 		print_debug("Spawned "+str(i)+" birdoid")
 	pass
 	
