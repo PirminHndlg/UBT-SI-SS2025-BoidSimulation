@@ -13,8 +13,12 @@ var z_bounds = Vector2(-5, 20)
 @onready var alignment_slider = get_node("../../WorldEnvironment/Control/alignment")
 @onready var cohesion_slider = get_node("../../WorldEnvironment/Control/cohesion")
 
+var goal_point = Vector3(0,0,0)
+@onready var random_timer = 	get_node("../../RandomEventTimer")	#trigger: 1s
+
 @export var neighbour_distance:float = 10.0
 var neighbours: Array = []
+@onready var goal_enabled = get_node("../../RandomEventTimer/goal")
 
 func _ready() -> void:
 	# Set up Animation
@@ -24,6 +28,23 @@ func _ready() -> void:
 	var speed = randf_range(0.0, max_initial_speed)
 	velocity*=speed
 	look_at(position+velocity)
+	
+	random_timer.start()
+	random_timer.connect("timeout", Callable(self, "_on_random_timer_timeout"))
+	
+	return
+	
+func _on_random_timer_timeout():
+	# This gets called every second
+	# with 70% chance new goal is defined
+	print(goal_enabled.process_mode)
+	if goal_enabled.process_mode and randf() > 0.7:
+		var rand_x = randi_range(x_bounds.x, x_bounds.y)
+		var rand_y = randi_range(y_bounds.x, y_bounds.y)
+		var rand_z = randi_range(z_bounds.x, z_bounds.y)
+		goal_point = Vector3(rand_x, rand_y, rand_z)
+		print(goal_point)
+		
 	return
 	
 
@@ -47,6 +68,7 @@ func _physics_process(_delta: float) -> void:
 	position.x = clamp(position.x, x_bounds.x, x_bounds.y)
 	position.y = clamp(position.y, y_bounds.x, y_bounds.y)
 	position.z = clamp(position.z, z_bounds.x, z_bounds.y)
+	
 	pass
 
 func find_neighbours() -> void:

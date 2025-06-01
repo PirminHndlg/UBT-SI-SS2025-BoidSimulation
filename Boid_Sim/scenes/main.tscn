@@ -184,6 +184,7 @@ offset_bottom = 19.0
 text = "Cohesion"
 
 [node name="percent_label" type="Label" parent="WorldEnvironment/Control"]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 95.0
 offset_right = 71.0
@@ -194,3 +195,20 @@ text = "all in %"
 
 [node name="Node3D" parent="Birds" instance=ExtResource("11_ya4ey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.861, 10, -9.30257)
+
+[node name="RandomEventTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="goal" type="CheckButton" parent="RandomEventTimer"]
+offset_left = 104.0
+offset_top = 147.0
+offset_right = 148.0
+offset_bottom = 171.0
+
+[node name="Label" type="Label" parent="RandomEventTimer/goal"]
+layout_mode = 0
+offset_left = -92.0
+offset_top = -1.0
+offset_right = -3.0
+offset_bottom = 22.0
+text = "Enable goal"
