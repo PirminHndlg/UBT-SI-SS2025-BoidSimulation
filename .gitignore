@@ -1,0 +1,33 @@
+# Ignore Godot-generated folders inside Boid_sim
+Boid_sim/.import/
+Boid_sim/.export/
+Boid_sim/export.cfg
+Boid_sim/export_presets.cfg
+
+# Godot temp and lock files
+Boid_sim/*.godot/tmp/
+Boid_sim/*.godot/lock/
+
+# Godot 4 editor cache folder
+Boid_sim/.godot/
+
+# Mono/C# specific (if using C#)
+Boid_sim/.mono/
+Boid_sim/data_*/
+
+# OS-generated files
+Boid_sim/.DS_Store
+Boid_sim/Thumbs.db
+Boid_sim/desktop.ini
+
+# Editor/IDE
+Boid_sim/.vscode/
+
+# Backup files
+Boid_sim/*.tmp
+Boid_sim/*.bak
+Boid_sim/*.old
+Boid_sim/*.orig
+
+# Logs
+Boid_sim/*.log
