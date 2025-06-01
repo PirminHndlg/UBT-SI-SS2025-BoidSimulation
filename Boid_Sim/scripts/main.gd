@@ -20,7 +20,7 @@ func _ready() -> void:
 			randf_range(-1.0, 1.0)
 		).normalized()
 		instance.velocity = random_direction
-		print_debug("Spawned"+str(i)+" birdoid")
+		print_debug("Spawned "+str(i)+" birdoid")
 	pass
 	
 func _physics_process(_delta: float) -> void:
