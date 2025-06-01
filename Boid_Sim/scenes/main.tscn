@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dcdta446dfpx6"]
+[gd_scene load_steps=18 format=3 uid="uid://dcdta446dfpx6"]
 
 [ext_resource type="Script" uid="uid://c2jmeqla5v1bf" path="res://scripts/main.gd" id="1_choun"]
 [ext_resource type="PackedScene" uid="uid://pf7bxvji104s" path="res://assets/models/nature/CommonTree_2.fbx" id="1_tbgi4"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cdtev5wnnw4lc" path="res://assets/models/nature/Pebble_Square_2.fbx" id="7_85g3d"]
 [ext_resource type="PackedScene" uid="uid://3ijtfdhsoyyc" path="res://assets/models/nature/Pebble_Square_5.fbx" id="8_choun"]
 [ext_resource type="PackedScene" uid="uid://bxj24veqj67pq" path="res://assets/models/nature/Pebble_Round_4.fbx" id="9_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://b86q3bdpuigak" path="res://scenes/bird.tscn" id="11_ya4ey"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_choun"]
 size = Vector3(1.4, 1, 1.05)
@@ -123,3 +124,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_choun")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/MeshInstance3D/StaticBody3D"]
 shape = SubResource("WorldBoundaryShape3D_choun")
+
+[node name="Birds" type="Node3D" parent="."]
+
+[node name="Node3D" parent="Birds" instance=ExtResource("11_ya4ey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.861, 10, -9.30257)

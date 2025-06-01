@@ -1,3 +1,5 @@
+Node3D
+Node
 CollisionShape3D
 StaticBody3D
 AnimationPlayer
@@ -7,6 +9,5 @@ Timer
 HSlider
 MeshInstance3D
 WorldEnvironment
-Node3D
 DirectionalLight3D
 Camera3D
