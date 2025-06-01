@@ -8,7 +8,7 @@ var x_range = Vector2(-20,20)
 var z_range = Vector2(-20,20)
 
 @onready var birds_root: Node3D = $Birds
-@onready var camera_3d: Camera3D = $Camera3D
+@onready var goal_prob: HSlider = $WorldEnvironment/Control/goal_prob
 
 # 2e)
 # Vector for goal point and get the timer node and the checkbox node

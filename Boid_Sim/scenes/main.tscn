@@ -186,10 +186,28 @@ text = "Cohesion"
 [node name="percent_label" type="Label" parent="WorldEnvironment/Control"]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 95.0
+offset_top = 116.775
 offset_right = 71.0
-offset_bottom = 118.0
+offset_bottom = 139.775
 text = "all in %"
+
+[node name="goal_prob" type="HSlider" parent="WorldEnvironment/Control"]
+layout_mode = 0
+offset_left = 112.385
+offset_top = 97.15
+offset_right = 331.385
+offset_bottom = 113.15
+max_value = 1.0
+step = 0.01
+value = 0.1
+
+[node name="Label" type="Label" parent="WorldEnvironment/Control/goal_prob"]
+layout_mode = 0
+offset_left = -98.48
+offset_top = -6.0
+offset_right = 59.52
+offset_bottom = 17.0
+text = "Goal chance"
 
 [node name="Birds" type="Node3D" parent="."]
 

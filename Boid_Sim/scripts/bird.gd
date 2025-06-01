@@ -47,7 +47,7 @@ func _physics_process(_delta: float) -> void:
 	apply_boid_behaviour(s_value, a_value, c_value)
 	
 	#random chance to point towards goal
-	if main!=null and main.goal_enabled.button_pressed and randf()<=goal_probability:
+	if main!=null and main.goal_enabled.button_pressed and randf()<=main.goal_prob.value:
 		velocity = (main.goal_point - global_transform.origin)
 		#if at goal, move in random direction
 		if(velocity.is_equal_approx(Vector3.ZERO)):
