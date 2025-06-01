@@ -49,7 +49,13 @@ func _physics_process(_delta: float) -> void:
 	#random chance to point towards goal
 	if main!=null and main.goal_enabled.button_pressed and randf()<=goal_probability:
 		velocity = (main.goal_point - global_transform.origin)
-	
+		#if at goal, move in random direction
+		if(velocity.is_equal_approx(Vector3.ZERO)):
+			velocity = Vector3(
+				randf_range(-1.0, 1.0),
+				randf_range(-1.0, 1.0),
+				randf_range(-1.0, 1.0)
+			).normalized()
 	# Look in moving direction
 	look_at(position+velocity)
 	

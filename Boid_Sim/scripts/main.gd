@@ -35,7 +35,7 @@ func _ready() -> void:
 func _on_random_timer_timeout():
 	# This gets called every second
 	# with 70% chance new goal is defined
-	if goal_enabled.process_mode and randf() > 0.7:
+	if goal_enabled.button_pressed and randf() > 0.7:
 		var rand_x = randi_range(x_range.x, x_range.y)
 		var rand_y = randi_range(y_range.x, y_range.y)
 		var rand_z = randi_range(z_range.x, z_range.y)
