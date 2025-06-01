@@ -8,11 +8,12 @@ var velocity: Vector3 = Vector3(
 			randf_range(-1.0, 1.0),
 			randf_range(-1.0, 1.0)
 		).normalized()
-@export var goal_point: Vector3 = Vector3.ZERO
 
 var x_bounds = Vector2(-20, 5)
 var y_bounds = Vector2(10,20)
 var z_bounds = Vector2(-5, 20)
+
+var goal_probability = 0.05
 
 # 2d)
 # get the slider nodes
@@ -20,6 +21,7 @@ var z_bounds = Vector2(-5, 20)
 @onready var alignment_slider = get_node("../../WorldEnvironment/Control/alignment")
 @onready var cohesion_slider = get_node("../../WorldEnvironment/Control/cohesion")
 
+@export var main:birdoid_main =null
 @export var neighbour_distance:float = 10.0
 var neighbours: Array = []
 
@@ -44,11 +46,15 @@ func _physics_process(_delta: float) -> void:
 
 	apply_boid_behaviour(s_value, a_value, c_value)
 	
-	#modify speed
-	velocity = velocity.normalized()*randf_range(0.0, max_initial_speed)
+	#random chance to point towards goal
+	if main!=null and main.goal_enabled.button_pressed and randf()<=goal_probability:
+		velocity = (main.goal_point - global_transform.origin)
 	
 	# Look in moving direction
 	look_at(position+velocity)
+	
+	#modify speed
+	velocity = velocity.normalized()*randf_range(0.0, max_initial_speed)
 	
 	# if bird is outside of boudary reverse direction
 	position+=velocity

@@ -1,5 +1,6 @@
 # Assets for creatures and nature models are made by QuaterniusDev (https://quaternius.com) which are shared under the
 # CC0 1.0 Universal License (CC0 1.0) Public Domain Dedication (https://creativecommons.org/publicdomain/zero/1.0/)
+class_name birdoid_main
 
 extends Node3D
 var y_range = Vector2(5,30)
@@ -13,7 +14,7 @@ var z_range = Vector2(-20,20)
 # Vector for goal point and get the timer node and the checkbox node
 var goal_point = Vector3(0,0,0)
 @onready var random_timer = 	get_node("RandomEventTimer")	#trigger: 1s
-@onready var goal_enabled = get_node("RandomEventTimer/goal")
+@onready var goal_enabled:CheckButton = get_node("RandomEventTimer/goal")
 
 const BIRD = preload("res://scenes/bird.tscn")
 func _ready() -> void:
@@ -21,7 +22,7 @@ func _ready() -> void:
 		var instance = BIRD.instantiate()
 		instance.position =Vector3(randf_rangeV(x_range),randf_rangeV(z_range),randf_rangeV(y_range))
 		birds_root.add_child(instance)
-		#instance.camera = camera_3d
+		instance.main=self
 		print_debug("Spawned "+str(i)+" birdoid")
 	
 	# start timer, add trigger function _on_random_timer_timeout
@@ -39,9 +40,7 @@ func _on_random_timer_timeout():
 		var rand_y = randi_range(y_range.x, y_range.y)
 		var rand_z = randi_range(z_range.x, z_range.y)
 		goal_point = Vector3(rand_x, rand_y, rand_z)
-		for i in range(birds_root.get_child_count()):
-			var bird = birds_root.get_child(i)
-			bird.goal_point = Vector3()
+		print_debug("New goal: "+str(goal_point))
 		
 	return
 	
